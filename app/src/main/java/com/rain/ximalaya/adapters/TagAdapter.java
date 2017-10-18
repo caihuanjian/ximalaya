@@ -9,7 +9,7 @@ import com.ximalaya.ting.android.opensdk.model.tag.Tag;
  * Created by HwanJ.Choi on 2017-10-12.
  */
 
-public class TagAdapter extends BaseAdatper<Tag> {
+public class TagAdapter extends BaseAdapter<Tag> {
     public TagAdapter(Context c) {
         super(c);
     }

@@ -1,7 +1,6 @@
 package com.rain.ximalaya.adapters;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -16,9 +15,8 @@ import static com.rain.ximalaya.utils.CommonUtil.formatPlayCount;
  * Created by HwanJ.Choi on 2017-10-12.
  */
 
-public class AlbumAdapter extends BaseAdatper<Album> {
+public class AlbumAdapter extends BaseAdapter<Album> {
 
-    private View.OnKeyListener mKeyListener;
 
     public AlbumAdapter(Context c) {
         super(c);
@@ -38,12 +36,8 @@ public class AlbumAdapter extends BaseAdatper<Album> {
         Glide.with(mContext).load(album.getCoverUrlLarge()).apply(RequestOptions.bitmapTransform(new CircleCrop()))
                 .apply(RequestOptions.placeholderOf(R.drawable.default_holder))
                 .into((ImageView) viewHolder.getView(R.id.iv_album_poster));
-        if (mKeyListener != null) {
-            viewHolder.itemView.setOnKeyListener(mKeyListener);
-        }
+
     }
 
-    public void setKeyListener(View.OnKeyListener listener) {
-        mKeyListener = listener;
-    }
+
 }

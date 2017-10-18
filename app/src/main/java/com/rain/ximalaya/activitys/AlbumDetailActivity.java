@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.rain.ximalaya.R;
-import com.rain.ximalaya.adapters.BaseAdatper;
+import com.rain.ximalaya.adapters.BaseAdapter;
 import com.rain.ximalaya.adapters.TrackAdapter;
 import com.rain.ximalaya.api.PlayService;
 import com.rain.ximalaya.utils.Constant;
@@ -38,7 +38,6 @@ public class AlbumDetailActivity extends BaseActivity {
 
     private ImageView mPoster;
 
-    private PlayService mPlayService;
 
     @Override
     protected boolean allowDisplayHome() {
@@ -49,7 +48,6 @@ public class AlbumDetailActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album_detail);
-        mPlayService = new PlayService(this);
         final Album album = getIntent().getExtras().getParcelable(Constant.KEY_ALBUM_PARCELABLE);
         initView(album);
         loadTracks(album.getId());
@@ -58,10 +56,10 @@ public class AlbumDetailActivity extends BaseActivity {
 
     private void setListener() {
 
-        mAdapter.setOnItemClickListener(new BaseAdatper.OnItemClickListener<Track>() {
+        mAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener<Track>() {
             @Override
             public void onItemClick(View view, Track track, int position) {
-                mPlayService.playTrack(track);
+                PlayService.getInstance(AlbumDetailActivity.this).playTrack(track);
             }
         });
     }
@@ -99,7 +97,6 @@ public class AlbumDetailActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPlayService.release();
     }
 
     public static void startSelf(Context context, Album album) {

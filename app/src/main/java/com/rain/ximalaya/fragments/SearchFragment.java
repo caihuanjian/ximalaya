@@ -97,6 +97,7 @@ public class SearchFragment extends BaseFragment implements View.OnClickListener
         mCurrentParm = new Param();
         mCurrentParm.setCategoryId(0);
         mCurrentParm.setSearchKey(key);
+        mCurrentParm.setPage(1);
         for (Page page : contentViews) {
             page.prepareParam(mCurrentParm);
         }
@@ -138,6 +139,7 @@ public class SearchFragment extends BaseFragment implements View.OnClickListener
             } else {
                 target = mViewFratory.createView(position);
                 contentViews.add(position, target);
+                target.setFocusUpListener(SearchFragment.this);
             }
             container.addView(target);
             return target;

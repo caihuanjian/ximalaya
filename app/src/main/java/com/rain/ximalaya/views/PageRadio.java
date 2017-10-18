@@ -29,7 +29,7 @@ public class PageRadio extends Page {
     }
 
     @Override
-    public void updateView(Object data) {
+    public void updateView(Object data, boolean append) {
 
     }
 

@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 
 import com.rain.ximalaya.model.Param;
+import com.rain.ximalaya.views.interfaces.FocusUpCallback;
 
 /**
  * Created by HwanJ.Choi on 2017-10-16.
@@ -19,6 +20,16 @@ public abstract class Page<T> extends RelativeLayout {
     private Param mCurrentParam;
 
     protected Param mLastLoadParam;
+
+    private FocusUpCallback mFocusUpListener;
+
+    public void setFocusUpListener(FocusUpCallback callback) {
+        mFocusUpListener = callback;
+    }
+
+    public FocusUpCallback getFocusUpListener() {
+        return mFocusUpListener;
+    }
 
     public Page(Context context) {
         this(context, null);
@@ -41,7 +52,7 @@ public abstract class Page<T> extends RelativeLayout {
         loadData(true);
     }
 
-    public abstract void updateView(T data);
+    public abstract void updateView(T data,boolean append);
 
     public void prepareParam(Param param) {
         mCurrentParam = param;

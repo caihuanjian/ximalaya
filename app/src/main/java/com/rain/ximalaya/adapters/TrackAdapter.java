@@ -17,7 +17,7 @@ import jp.wasabeef.glide.transformations.ColorFilterTransformation;
  * Created by HwanJ.Choi on 2017-10-12.
  */
 
-public class TrackAdapter extends BaseAdatper<Track> {
+public class TrackAdapter extends BaseAdapter<Track> {
 
     public TrackAdapter(Context c) {
         super(c);

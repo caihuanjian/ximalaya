@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.rain.ximalaya.CustomSubscribe;
 import com.rain.ximalaya.R;
 import com.rain.ximalaya.activitys.TagActivity;
-import com.rain.ximalaya.adapters.BaseAdatper;
+import com.rain.ximalaya.adapters.BaseAdapter;
 import com.rain.ximalaya.adapters.CategoryAdapter;
 import com.rain.ximalaya.adapters.TagAdapter;
 import com.rain.ximalaya.fragments.base.BaseFragment;
@@ -59,7 +59,7 @@ public class HomeFragment extends BaseFragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), CLUMN));
         mCategoryAdapter = new CategoryAdapter(getContext());
         recyclerView.setAdapter(mCategoryAdapter);
-        mCategoryAdapter.setOnItemClickListener(new BaseAdatper.OnItemClickListener<Category>() {
+        mCategoryAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener<Category>() {
             @Override
             public void onItemClick(View view, final Category category, int position) {
                 CustomPopWindow customPopWindow = new CustomPopWindow.PopupWindowBuilder(getContext()).
@@ -68,7 +68,7 @@ public class HomeFragment extends BaseFragment {
                 final RecyclerView rv = (RecyclerView) contentView.findViewById(R.id.rv_tag_dialog);
                 rv.setLayoutManager(new GridLayoutManager(getContext(), CLUMN));
                 mTagAdapter = new TagAdapter(getContext());
-                mTagAdapter.setOnItemClickListener(new BaseAdatper.OnItemClickListener<Tag>() {
+                mTagAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener<Tag>() {
                     @Override
                     public void onItemClick(View view, Tag tag, int position) {
                         Intent intent = new Intent(getContext(), TagActivity.class);

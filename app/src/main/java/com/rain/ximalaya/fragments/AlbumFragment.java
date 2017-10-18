@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.rain.ximalaya.R;
 import com.rain.ximalaya.activitys.AlbumDetailActivity;
 import com.rain.ximalaya.adapters.AlbumAdapter;
-import com.rain.ximalaya.adapters.BaseAdatper;
+import com.rain.ximalaya.adapters.BaseAdapter;
 import com.rain.ximalaya.fragments.base.BaseFragment;
 import com.ximalaya.ting.android.opensdk.constants.DTransferConstants;
 import com.ximalaya.ting.android.opensdk.datatrasfer.CommonRequest;
@@ -51,7 +51,7 @@ public class AlbumFragment extends BaseFragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), CLUMN));
         mAlbumAdapter = new AlbumAdapter(getContext());
         recyclerView.setAdapter(mAlbumAdapter);
-        mAlbumAdapter.setOnItemClickListener(new BaseAdatper.OnItemClickListener<Album>() {
+        mAlbumAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener<Album>() {
             @Override
             public void onItemClick(View view, Album album, int position) {
                 AlbumDetailActivity.startSelf(getContext(), album);

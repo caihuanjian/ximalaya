@@ -9,7 +9,7 @@ import com.ximalaya.ting.android.opensdk.model.category.Category;
  * Created by HwanJ.Choi on 2017-10-12.
  */
 
-public class CategoryAdapter extends BaseAdatper<Category> {
+public class CategoryAdapter extends BaseAdapter<Category> {
 
     public CategoryAdapter(Context c) {
         super(c);

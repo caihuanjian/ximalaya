@@ -21,13 +21,23 @@ public class PlayService implements IXmPlayerStatusListener {
     private final static String TAG = "PlayService";
 
     private XmPlayerManager mPlayer;
-    //    private Context context;
     private List<Track> mTracks = new ArrayList<>();
 
-    public PlayService(Context context) {
+    private volatile static PlayService sPlayService;
+
+    private PlayService(Context context) {
         mPlayer = XmPlayerManager.getInstance(context);
         mPlayer.init();
         mPlayer.addPlayerStatusListener(this);
+    }
+
+    public static PlayService getInstance(Context context) {
+        if (sPlayService == null) {
+            synchronized (PlayService.class) {
+                sPlayService = new PlayService(context);
+            }
+        }
+        return sPlayService;
     }
 
     public void playTracks(List<Track> tracks, int startIndex) {
@@ -107,7 +117,15 @@ public class PlayService implements IXmPlayerStatusListener {
         return false;
     }
 
+    public void stop() {
+        mPlayer.stop();
+    }
+
     public void release() {
+
+        if (mPlayer.isPlaying()) {
+            stop();
+        }
         mPlayer.release();
     }
 }
